@@ -29,7 +29,7 @@ def show
   
   @place.save
   #   # redirect user
-  redirect_to "/place"
+  redirect_to "/places"
    end
 
 
