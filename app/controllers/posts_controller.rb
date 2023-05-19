@@ -3,8 +3,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by({"id" => params["id"]})
-    @place = Place.where({"id" => @post["place_id"]})
-    
+    @place = Place.where({"id" => @post["place_id"]}) 
   end
 
   def new
@@ -14,12 +13,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    # start with a new Contact
-    @contact = Contact.new
+    
+    @post = Post.new
 
-    # assign user-entered form data to Contact's columns
+    # assign user-entered form data to Post's columns
     @post["title"] = params["post"]["title"]
-    @post["posted_on"] = params["post"]["posten_on"]
+    @post["posted_on"] = params["post"]["posted_on"]
+    @post["description"] = params["post"]["description"]
     
     
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @post.save
 
     # redirect user
-    redirect_to "/companies/#{@contact["company_id"]}"
+    redirect_to "/places/#{@post["place_id"]}"
   end
 
 end
